@@ -1,9 +1,19 @@
-require("theprimeagen.set")
-require("theprimeagen.remap")
+require("core.set")
+require("core.remap")
+require("core.packer")
 
--- DO NOT INCLUDE THIS
-vim.opt.rtp:append("~/personal/streamer-tools")
--- DO NOT INCLUDE THIS
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
