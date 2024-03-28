@@ -1,3 +1,4 @@
+
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
@@ -6,6 +7,19 @@ lsp.ensure_installed({
     'pyright'
 })
 
+local lspconfig = require('lspconfig')
+lspconfig.pyright.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off"
+          }
+        }
+    }
+}
+--
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
