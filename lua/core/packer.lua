@@ -8,14 +8,6 @@ return require('packer').startup(function(use)
   })
   use({ "catppuccin/nvim", as = "catppuccin" })
   use({
-    "folke/trouble.nvim",
-    config = function()
-        require("trouble").setup {
-            icons = false,
-        }
-    end
-  })
-  use({
     'nvim-treesitter/nvim-treesitter',
     run = function()
         local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
