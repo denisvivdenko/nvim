@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
   use("nvim-treesitter/nvim-treesitter-context");
+  use { "ellisonleao/gruvbox.nvim" }
 
   use {
     'VonHeikemen/lsp-zero.nvim',
